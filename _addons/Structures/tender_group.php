@@ -1,0 +1,21 @@
+<?php
+return array (
+  'id' => 8,
+  'name' => 'Тендеры на поставку окон, фасадов',
+  'name_ua' => 'Тендери на поставку вікон, фасадів',
+  'name_en' => 'Tenders for supply of windows, facades',
+  'domen' => 'tenders',
+  'prior' => 1,
+  'nopubl' => 'Тендер закрыт',
+  'nopubl_ua' => 'Тендер закрито',
+  'nopubl_en' => 'The tender closed',
+  'title' => 'Тендеры по фасадам, окнам. Тендеры на установку и поставку окон, фасадов',
+  'title_ua' => 'Тендери по фасадах, вікнам. Тендери на установку і поставку вікон, фасадів',
+  'title_en' => 'Tenders for facades, windows. Tenders for the supply and installation of windows, facades',
+  'name_short' => 'Тендеры',
+  'name_short_ua' => 'Тендери',
+  'name_short_en' => 'Tenders',
+  'prior_index' => 1,
+  'enable' => 1,
+  'direct_link' => 'https://board.okna.ua/b-tenders',
+);

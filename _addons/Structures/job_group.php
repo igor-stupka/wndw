@@ -1,0 +1,21 @@
+<?php
+return array (
+  'id' => 0,
+  'name' => 'Работа - Вакансии',
+  'name_ua' => 'Робота - Вакансії',
+  'name_en' => 'Jobs - Vacancies',
+  'domen' => 'job',
+  'prior' => 20,
+  'nopubl' => 'Вакансия уже закрыта',
+  'nopubl_ua' => 'Вакансія вже закрита',
+  'nopubl_en' => 'Vacancy has already been closed',
+  'title' => '',
+  'title_ua' => '',
+  'title_en' => '',
+  'name_short' => 'Работа',
+  'name_short_ua' => 'Робота',
+  'name_short_en' => 'Jobs',
+  'prior_index' => 6,
+  'enable' => 1,
+  'direct_link' => 'https://board.okna.ua/b-job',
+);
