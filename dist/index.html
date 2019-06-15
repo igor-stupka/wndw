@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="rus">
+<html lang="ru">
   <head>
     <title>okna.ua - Main</title>
     <meta charset="UTF-8">
@@ -24,13 +24,82 @@
       <link rel="stylesheet" href="css/main.min.css">
     </noscript>
   </head>
-  <body id="body">
+  <body id="body"><a class="banner" href="#"><img class="banner__img" src="../img/banner.jpg" alt="Banner"></a>
     <header class="header">
-      <div class="container"></div>
+      <div class="container">
+        <div class="header__line">
+          <div class="header__left"><a class="header__logo" href="#"><img class="header__logo-img" src="img/logo.svg" alt="okna.ua" role="logo"></a>
+            <nav class="nav">
+              <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="#">ОКНА</a>
+                  <ul class="nav__submenu">
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОКНKO 1</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОКНO 2</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОКНO 3</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item"><a class="nav__link" href="#">РЕЙТИНГ</a></li>
+                <li class="nav__item"><a class="nav__link" href="#">калькуляторы</a></li>
+                <li class="nav__item"><a class="nav__link" href="#">ОБЪЯВЛЕНИЯ</a>
+                  <ul class="nav__submenu">
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОБЪЯВЛЕНИE 1</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОБЪЯВЛЕНИE 2</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ОБЪЯВЛЕНИE 3</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item"><a class="nav__link" href="#">ТЕНДЕРЫ</a></li>
+                <li class="nav__item"><a class="nav__link" href="#">ТОВАРЫ</a>
+                  <ul class="nav__submenu">
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ТОВАР 1</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ТОВАР 2</a></li>
+                    <li class="nav__subitem"><a class="nav__sublink" href="#">ТОВАР 3</a></li>
+                  </ul>
+                </li>
+                <li class="nav__item"><a class="nav__link" href="#">Еще</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="header__right">
+            <div class="header__lang">
+              <div class="lang">
+                <select>
+                  <option value="ru">рус</option>
+                  <option value="ua">укр</option>
+                  <option value="en">анг</option>
+                </select>
+              </div>
+            </div><a class="user-pic" href="#">
+              <div class="user-pic__wrap"><img class="user-pic__img" src="" alt=""></div></a>
+          </div>
+        </div>
+        <div class="header__search">
+          <form class="search-bar" action="">
+            <label class="search-bar__icon" for="searcher"></label>
+            <input class="search-bar__input" type="text" placeholder="Find the best window company..." name="search" id="searcher" aria-label="Поиск">
+            <select>
+              <option>9234 Компании</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+          </form>
+        </div>
+      </div>
     </header>
     <main>
-      <section>
-        <div class="container"> </div>
+      <section class="first">
+        <div class="container">
+          <div class="first__container"><img src="img/first.jpg" alt="">
+            <div class="first__wrap">
+              <div class="first__phrase">
+                <div class="first__phrase-first">ЭнергоэФфективные </div>
+                <div class="first__phrase-second">окна</div>
+                <div class="first__phrase-third">для квартиры и дома</div>
+              </div>
+              <div class="first__buttons"><a class="button button--transparent" href="#">Выбрать компанию</a><a class="button button--light" href="#">рассчитать окна</a></div>
+            </div>
+          </div>
+        </div>
       </section>
     </main>
     <footer class="footer">

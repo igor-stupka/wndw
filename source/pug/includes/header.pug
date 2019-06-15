@@ -1,2 +1,62 @@
 header.header
 	.container
+		.header__line
+			.header__left
+				a(href="#").header__logo
+					img(src="img/logo.svg", alt="okna.ua", role="logo").header__logo-img
+				nav.nav
+					ul.nav__list
+						li.nav__item
+							a(href="#").nav__link ОКНА
+							ul.nav__submenu
+								li.nav__subitem
+									a(href="#").nav__sublink ОКНKO 1
+								li.nav__subitem
+									a(href="#").nav__sublink ОКНO 2
+								li.nav__subitem
+									a(href="#").nav__sublink ОКНO 3
+						li.nav__item
+							a(href="#").nav__link РЕЙТИНГ
+						li.nav__item
+							a(href="#").nav__link калькуляторы
+						li.nav__item
+							a(href="#").nav__link ОБЪЯВЛЕНИЯ
+							ul.nav__submenu
+								li.nav__subitem
+									a(href="#").nav__sublink ОБЪЯВЛЕНИE 1
+								li.nav__subitem
+									a(href="#").nav__sublink ОБЪЯВЛЕНИE 2
+								li.nav__subitem
+									a(href="#").nav__sublink ОБЪЯВЛЕНИE 3
+						li.nav__item
+							a(href="#").nav__link ТЕНДЕРЫ
+						li.nav__item
+							a(href="#").nav__link ТОВАРЫ
+							ul.nav__submenu
+								li.nav__subitem
+									a(href="#").nav__sublink ТОВАР 1
+								li.nav__subitem
+									a(href="#").nav__sublink ТОВАР 2
+								li.nav__subitem
+									a(href="#").nav__sublink ТОВАР 3
+						li.nav__item
+							a(href="#").nav__link Еще
+			.header__right
+				.header__lang
+					.lang
+						select
+							option(value="ru") рус
+							option(value="ua") укр
+							option(value="en") анг
+				a(href="#").user-pic
+					.user-pic__wrap
+						img(src="", alt="").user-pic__img
+		.header__search
+			form(action="").search-bar
+				label(for="searcher").search-bar__icon
+				input(type="text", placeholder="Find the best window company..." name="search" id="searcher" aria-label="Поиск").search-bar__input
+				select
+					option 9234 Компании
+					option 1
+					option 2
+					option 3
