@@ -1,13 +1,9 @@
 .select
 	position: relative
 	user-select: none
-	width: 100%
+	display: inline-block
+	padding-right: 20px
 	&.opened .select__
-		&current 
-			&::after
-				opacity: 1
-				visibility: visible
-				transition: opacity .2s
 		&arrow
 			transform: rotateZ(-180deg)
 		&options
@@ -15,52 +11,20 @@
 			opacity: 1
 			z-index: 1
 			transition: opacity .3s, transform .3s
-	&--
-		&inline 
-			.select__current
-				height: 20px
-				width: calc(100% + 20px)
-				padding: 0
-				opacity: 0
-				user-select: none
-				position: absolute
-				left: 0
-				bottom: 0
-			.select__arrow
-				display: none
-			.select__options
-				width: 176px
-				left: auto
-				right: -38px
 	&__
 		&current
-			@include flex(row, flex-start, center, nowrap)
-			height: 50px
-			border-radius: 10px
-			border: 1px solid #cecece
-			background-color: #fff
-			padding: 0 20px 
-			padding-right: 35px
+			display: flex
+			align-items: center
+			flex-wrap: nowrap
 			cursor: pointer
-			color: #000
-			font-size: 15px
-			letter-spacing: 0.45px
+			text-transform: uppercase
 			transition: .3s
-			&::after
-				content: ''
-				position: absolute
-				top: calc(100% + 6px)
-				right: 18px
-				height: 10px
-				width: 10px
-				display: block
-				border-top: 1px solid #cecece
-				border-left: 1px solid #cecece
-				transform: scaleX(1.7) rotate(45deg)
-				z-index: 2
-				background: linear-gradient(0.38turn, #fff 0%, #fff 50%, transparent 50%, transparent 100%)
-				opacity: 0
-				visibility: hidden
+			color: rgba(#000000, .5)
+			font-size: 13px
+			font-weight: 700
+			line-height: 26px
+			text-decoration: underline
+			letter-spacing: 0.33px
 
 
 		&currentText
@@ -70,32 +34,20 @@
 			overflow: hidden
 			white-space: nowrap
 		&arrow
-			width: 14px
-			height: 14px
+			width: 8px
+			height: 6px
 			position: absolute
-			top: 18px
-			right: 19px
+			top: calc(50% - 3px)
+			right: 0
+			background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='8' height='6' viewBox='0 0 8 6'%3E%3Cimage width='8' height='6' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAGCAYAAAD+Bd/7AAAAWElEQVQYV2NkgAARIH4DZcMosBgjkPAD4rlA7ATEl6GyukB6HxAngRQwA/EiIHaDKgKpAUnuAuI4kAIQQFYE4oMlgfgvTAGyIhAbLAliICuAKQLRYEkQAADYbw5XG/dJ+AAAAABJRU5ErkJggg=='/%3E%3C/svg%3E")
 			cursor: pointer
 			transition: .3s
-			&::before
-				content: ''
-				display: block
-				width: 10px
-				height: 10px
-				border-right: 2px solid #000
-				border-bottom: 2px solid #000
-				transform: rotate(45deg)
+
 
 		&options
-			text-align: center
-			border-radius: 10px
-			box-shadow: 0 2px 2px rgba(7, 32, 194, 0.2)
-			border: 1px solid #cecece
-			background-color: #fff
 			position: absolute
-			top: calc(100% + 11px)
-			left: 0
-			width: 100%
+			top: 100%
+			left: -10px
 			transform-origin: top
 			opacity: 0
 			transition: opacity .3s, transform .3s
@@ -104,6 +56,7 @@
 			z-index: -1
 			margin-bottom: 10px
 			visibility: hidden
+			background-color: #fff
 			&::-webkit-scrollbar
 				width: 2px
 			&::-webkit-scrollbar-track
@@ -117,17 +70,15 @@
 			color: #000
 			font-size: 13px
 			line-height: 21px
-			padding: 7px 5px
 			cursor: pointer
+			color: #96939f
+			font-size: 13px
+			font-weight: 700
 			text-overflow: ellipsis
 			overflow: hidden
-			&:not(:last-child)
-				border-bottom: 1px solid transparent
-			&:not(:first-child)
-				border-top: 1px solid transparent
+			z-index: 1
+			text-transform: uppercase
+			padding: 3px 10px
 			&.active
-				background-color: rgba(#cecece, .2)
 				font-weight: 700
 				color: #000
-				border-bottom-color: transparent
-				border-top-color: transparent

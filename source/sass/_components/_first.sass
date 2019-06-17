@@ -1,1 +1,72 @@
 .first 
+	margin-bottom: 64px
+	&__
+		&container
+			position: relative
+		&wrap
+			max-width: 910px
+			margin: 0 auto
+			position: absolute
+			top: 50%
+			left: 0
+			right: 0
+			transform: translateY(-50%)
+			z-index: 1
+		&phrase
+			padding: 4px 10px
+			font-size: 36px
+			text-transform: uppercase
+			font-weight: 900
+			display: inline-block
+		&phrase-first
+			background: $accent2C
+			color: $whiteC
+			transform: rotate(-2deg)
+		&phrase-second
+			color: $accent1C
+			background: $whiteC
+			transform: rotate(2deg) translate(-183px, 58px)
+		&phrases
+			margin-bottom: 40px
+		&descr 
+			font-size: 24px
+			line-height: 36px
+			color: $lightGrayC
+			text-transform: uppercase
+			font-weight: 300
+			margin-bottom: 38px
+		&buttons
+			display: flex
+			align-items: center
+
+.button 
+	font-size: 14px
+	font-weight: 700
+	height: 58px
+	min-width: 195px
+	max-width: 290px
+	text-align: center
+	cursor: pointer
+	user-select: none
+	text-transform: uppercase
+	line-height: 54px 
+	border: 3px solid #ffffff
+	& + .button
+		margin-left: 60px
+	&--
+		&transparent
+			border: 3px solid #ffffff
+			color: #fff
+			&:hover 
+				background-color:  #fff
+				color: #000
+		&light 
+			background-color:  #fff
+			color: #000
+			&:hover 
+				color: #fff
+				background-color: #000
+
+
+
+

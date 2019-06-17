@@ -1,13 +1,12 @@
 class Tabs{
   constructor(item){
     this.parent = item;
-    this.nav = [...item.querySelectorAll('.tabs__item')];
-    this.tabs = [...item.querySelectorAll('.tabs__tab')];
+    this.nav = [...item.querySelectorAll('.js-tabs__item')];
+    this.tabs = [...item.querySelectorAll('.js-tabs__tab')];
 
     this.nav.forEach((item, i) => item.addEventListener('click', () => {
       this.itter(this.nav, i);
 			this.itter(this.tabs, i);
-			sliders.filter(x => x.name == 'gallery').forEach(item => item.slider.init())
     }))
   }
 
@@ -18,6 +17,4 @@ class Tabs{
   } 
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  [...document.querySelectorAll('.tabs')].forEach(item => new Tabs(item))
-});
+[...document.querySelectorAll('.js-tabs')].forEach(item => new Tabs(item));

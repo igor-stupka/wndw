@@ -4407,19 +4407,13 @@ function () {
     _classCallCheck(this, Tabs);
 
     this.parent = item;
-    this.nav = _toConsumableArray(item.querySelectorAll('.tabs__item'));
-    this.tabs = _toConsumableArray(item.querySelectorAll('.tabs__tab'));
+    this.nav = _toConsumableArray(item.querySelectorAll('.js-tabs__item'));
+    this.tabs = _toConsumableArray(item.querySelectorAll('.js-tabs__tab'));
     this.nav.forEach(function (item, i) {
       return item.addEventListener('click', function () {
         _this.itter(_this.nav, i);
 
         _this.itter(_this.tabs, i);
-
-        sliders.filter(function (x) {
-          return x.name == 'gallery';
-        }).forEach(function (item) {
-          return item.slider.init();
-        });
       });
     });
   }
@@ -4437,8 +4431,6 @@ function () {
   return Tabs;
 }();
 
-document.addEventListener('DOMContentLoaded', function () {
-  _toConsumableArray(document.querySelectorAll('.tabs')).forEach(function (item) {
-    return new Tabs(item);
-  });
+_toConsumableArray(document.querySelectorAll('.js-tabs')).forEach(function (item) {
+  return new Tabs(item);
 });
