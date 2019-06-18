@@ -1,4 +1,16 @@
 "use strict";
+
+setTimeout(function () {
+  var mySwiper = new Swiper('.js-stock__carousel', {
+    loop: true,
+    slidesPerView: 3,
+    spaceBetween: 30,
+    pagination: {
+      el: '.stock__pagination',
+      clickable: true
+    }
+  });
+}, 300);
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -86,6 +98,40 @@ selects.forEach(function (select) {
     datesBtn && datesBtn.querySelector('.select') && datesBtn.querySelector('.select').classList.contains('opened') ? datesBtn.classList.add('active') : datesBtn && datesBtn.classList.remove('active');
   });
 });
+"use strict";
+
+var discounts = document.querySelectorAll('.js-discount');
+var date = new Date();
+discounts.forEach(function (discount) {
+  var startArr = getDateArr(discount.dataset.start);
+  var dlArr = getDateArr(discount.dataset.deadline);
+  var start = normaliser(startArr);
+  var deadline = normaliser(dlArr);
+  var res = daysDifferent(deadline, date);
+  var difference = daysDifferent(deadline, start);
+  var percentage = 100 - Math.round(res / difference * 100);
+  discount.querySelector('.js-deadline').innerHTML = res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
+  discount.querySelector('.stock__progress-bar').style.width = percentage + '%';
+});
+
+function declOfNum(number, titles) {
+  var cases = [2, 0, 1, 1, 1, 2];
+  return titles[number % 100 > 4 && number % 100 < 20 ? 2 : cases[number % 10 < 5 ? number % 10 : 5]];
+}
+
+function getDateArr(str) {
+  return str.split('.').map(function (item) {
+    return parseInt(item);
+  });
+}
+
+function normaliser(arr) {
+  return new Date(arr[2], arr[0] - 1, arr[1]);
+}
+
+function daysDifferent(first, second) {
+  return Math.round((first - second) / (1000 * 60 * 60 * 24));
+}
 "use strict";
 
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }

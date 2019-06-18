@@ -1,0 +1,66 @@
+.stock
+	background-color: #f0f0f2
+	padding: 55px 0
+	margin-bottom: 55px
+	&__
+		&title
+			margin-bottom: 55px
+		&head
+			display: flex
+			align-items: center
+			margin-bottom: 19px
+		&discount
+			border-radius: 50%
+			background-color: $accent2C
+			margin-right: 19px
+			width: 50px
+			height: 50px
+			line-height: 50px
+			text-align: center
+			color: #ffffff
+			font-size: 13px
+			font-weight: 700
+			text-transform: uppercase
+		&product
+			color: #96939f
+			font-family: Montserrat
+			font-size: 13px
+			font-weight: 700
+			text-transform: uppercase
+		&offer
+			display: block
+			color: #201f1f
+			font-size: 18px
+			font-weight: 900
+			line-height: 24px
+			height: 43px
+			margin-bottom: 35px
+			&:hover
+				color: $accent2C 
+		&progress
+			width: 275px
+			height: 6px
+			background-color: #fff
+			border-radius: 3px
+			margin-bottom: 13px
+		&progress-bar
+			border-radius: inherit
+			background-color: $accent1C
+			height: inherit
+			width: 0
+		&deadline
+			color: rgba(#707070, 0.65)
+			font-size: 13px
+			font-weight: 700
+		&pagination
+			margin-top: 55px
+			position: static
+			& > .swiper-pagination-bullet
+				width: 18px
+				height: 18px
+				background-color: #fff
+				margin: 0 7px
+				transition: background-color $time $timeF
+				opacity: 1
+				&-active
+					background-color: $accent2C

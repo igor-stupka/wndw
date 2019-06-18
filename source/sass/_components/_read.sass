@@ -15,13 +15,32 @@
 			justify-content: space-between
 			align-items: center
 		&articles
-			display: grid
 			grid-template-columns: 1fr 1fr 1fr
 			grid-gap: 60px 15px
+			display: none
+			&.active
+				display: grid
 		&right
 			width: 300px
+			position: relative
 		&banner
 			width: 100%
 			min-height: 435px
 			background-color: #eff1f3
 			display: block
+			position: sticky
+			top: 15px
+			left: 0
+		&tabs
+			display: flex
+		&tab
+			font-size: 13px
+			font-weight: 700
+			text-transform: uppercase
+			color: #96939f
+			cursor: pointer
+			user-select: none
+			&.active
+				color: #236feb
+			&:not(:last-child)
+				margin-right: 40px

@@ -1,0 +1,48 @@
+.ad
+	padding: 70px 0 50px
+	&__
+		&row
+			display: flex
+			justify-content: space-between
+		&column 
+			width: calc(50% - 15px)
+			margin-bottom: 40px
+		&list
+			margin-top: 38px
+		&item
+			display: flex
+			align-items: center
+			&:not(:last-child)
+				margin-bottom: 25px
+		&secondary
+			color: #96939f
+			font-size: 18px
+			font-weight: 900
+			margin-bottom: 8px
+		&secondary 
+			display: flex
+			align-items: center
+		&icon
+			width: 19px
+			height: 22px
+			margin-right: 13px
+			filter: brightness(0)
+		&title
+			color: #201f1f
+			font-size: 18px
+			font-weight: 900
+			line-height: 26px
+			&:hover 
+				color: $accent2C
+		&pic-wrap
+			width: 40px
+			height: 40px
+			overflow: hidden
+			border-radius: 50%
+			position: relative
+			margin-right: 19px
+		&pic
+			position: absolute
+			left: 50%
+			top: 50%
+			transform: translate(-50%, -50%)
