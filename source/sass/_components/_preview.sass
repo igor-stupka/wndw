@@ -1,6 +1,5 @@
 .preview
 	display: block
-
 	&__
 		&img-wrap
 			margin-bottom: 32px
@@ -8,6 +7,21 @@
 			overflow: hidden
 			padding-top: 67%
 			background-color: #95929f
+			&--
+				&video
+					&::before
+						content: ''
+						background: no-repeat center url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='28' height='32' viewBox='0 0 28 32'%3E%3Cg%3E%3Cg%3E%3Cimage width='28' height='32' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAgCAYAAAABtRhCAAABTElEQVRIS92Xu0oDQRRAE38hha3/JSRg6zNoYSWECEoExTSWCQlYWCmCYmWVD7CxUTCFRdBCEMQHMfFc3AsiQ7KzmblFFg5z2cc9O8POzN187vdYgHm4gkP4TM4Hb/JkLMATzCTZ72lX4SK4jYQinIMHR/LzROy6lvldRgkl6QfswQ68Z7b8eXCcUG/tEpThdFJpWqF65KNahrusYl+heL7gAKrw5ivOIlTHI8E6nPhIJxGq55pgCW7TiEMIxdOHOlTgdZQ4lFAdPYINOIahSxxaqI4OwSLc/JfGEornG45gC15UHFOojmeCTWjCwEKo4hZByVIo4tmpFrbpYdGih/rRNGRuxhSaTguziW+2tJku3mbbk9kGLCXGPmxD9BLDrIjq0ps1OHNtqj7nxk18KYRrsAvRC+Fopb7rZ2aFHl36DFXae2VI5TD7XfsBMthmTVNE6rcAAAAASUVORK5CYII='/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); 
+						background-size: contain
+						filter: invert(1)
+						position: absolute
+						left: 50%
+						top: 50%
+						transform: translate(-50%, -50%)
+						width: 28px
+						height: 32px
+
+
 		&img
 			position: absolute
 			width: 100%
@@ -29,5 +43,6 @@
 			margin-bottom: 5px
 	&:hover
 		.preview__title
-			color: $accent2C 
-		
+			color: $accent2C
+		.preview__img-wrap--video::before
+			transform: translate(-50%, -50%) scale(1.1)

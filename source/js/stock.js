@@ -3,15 +3,22 @@ let date = new Date();
 
 discounts.forEach(discount => {
 	let startArr = getDateArr(discount.dataset.start);
-	let dlArr = getDateArr(discount.dataset.deadline);
+	let dlArr = getDateArr(discount.dataset.deadline); 
 	let start = normaliser(startArr);
 	let deadline = normaliser(dlArr);
 	let res = daysDifferent(deadline, date);
 	let difference = daysDifferent(deadline, start);
 	let percentage = 100 - Math.round(res / difference * 100);
 
-	discount.querySelector('.js-deadline').innerHTML = res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
-	discount.querySelector('.stock__progress-bar').style.width = percentage + '%'
+	if (res >= 0) {
+		discount.querySelector('.js-deadline').innerHTML = 'осталось ' + res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
+		discount.querySelector('.stock__progress-bar').style.width = percentage + '%';
+	} else {
+		discount.querySelector('.js-deadline').innerHTML = (res * -1) + ' ' + declOfNum((res * -1), ['день', 'дня', 'дней']) + ' назад';
+		discount.querySelector('.stock__progress-bar').style.width = '100%';
+		discount.querySelector('.js-deadline').style.color = 'red';
+	}
+
 })
 
 function declOfNum(number, titles) {  

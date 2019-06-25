@@ -110,8 +110,15 @@ discounts.forEach(function (discount) {
   var res = daysDifferent(deadline, date);
   var difference = daysDifferent(deadline, start);
   var percentage = 100 - Math.round(res / difference * 100);
-  discount.querySelector('.js-deadline').innerHTML = res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
-  discount.querySelector('.stock__progress-bar').style.width = percentage + '%';
+
+  if (res >= 0) {
+    discount.querySelector('.js-deadline').innerHTML = 'осталось ' + res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
+    discount.querySelector('.stock__progress-bar').style.width = percentage + '%';
+  } else {
+    discount.querySelector('.js-deadline').innerHTML = res * -1 + ' ' + declOfNum(res * -1, ['день', 'дня', 'дней']) + ' назад';
+    discount.querySelector('.stock__progress-bar').style.width = '100%';
+    discount.querySelector('.js-deadline').style.color = 'red';
+  }
 });
 
 function declOfNum(number, titles) {

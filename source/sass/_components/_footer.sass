@@ -1,1 +1,58 @@
 .footer
+	background-color: #95929f
+	padding: 33px 0
+	&__
+		&top 
+			display: flex
+			justify-content: space-between
+			align-items: center
+			margin-bottom: 45px
+		&logo
+			max-width: 190px
+			width: 100%
+		&tel 
+			color: #ffffff
+			font-size: 30px
+			font-weight: 700
+			text-transform: uppercase
+			&::before 
+				content: attr(data-code )
+				color: #c6c6c6
+		&nav
+			display: grid
+			grid-template-columns: 1fr 1fr
+			grid-gap: 30px 95px
+			padding-bottom: 25px
+		&title
+			text-transform: uppercase
+			color: #000
+			font-size: 16px
+			font-weight: 700
+			margin-bottom: 26px
+		&menu
+			display: flex
+			justify-content: space-between
+			flex-wrap: wrap
+		&menu-item
+			width: calc(50% - 25px)
+			margin-bottom: 22px
+		&link 
+			color: #fff
+			font-size: 14px
+			line-height: 1.4
+			text-transform: uppercase
+			font-weight: 400
+			&:hover 
+				color: $accent2C
+		&links
+			width: 100%
+			display: flex
+			justify-content: center
+		&li
+			padding: 0 9px
+		&a
+			color: #fff
+			font-size: 12px
+			&:hover 
+				color: $accent2C
+
