@@ -1,5 +1,5 @@
 setTimeout(function() {
-	var mySwiper = new Swiper ('.js-stock__carousel', {
+	new Swiper ('.js-stock__carousel', {
 		loop: true,
 		slidesPerView: 3,
 		spaceBetween: 30,
