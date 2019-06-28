@@ -21,6 +21,71 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Ratings =
+/*#__PURE__*/
+function () {
+  function Ratings(item) {
+    var _this = this;
+
+    _classCallCheck(this, Ratings);
+
+    this.parent = item;
+    this.prevBtn = item.querySelector('.rating__prev');
+    this.nextBtn = item.querySelector('.rating__next');
+    this.titles = _toConsumableArray(item.querySelectorAll('.rating__caption'));
+    this.lists = _toConsumableArray(item.querySelectorAll('.rating__list'));
+    this.active = 0;
+    this.nextBtn.addEventListener('click', function () {
+      return _this.itter(_this.chkr(++_this.active));
+    });
+    this.prevBtn.addEventListener('click', function () {
+      return _this.itter(_this.chkr(--_this.active));
+    });
+  }
+
+  _createClass(Ratings, [{
+    key: "itter",
+    value: function itter(i) {
+      var cls = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'active';
+      this.lists.forEach(function (item) {
+        return item.classList.remove(cls);
+      });
+      this.lists[i].classList.add(cls);
+      this.titles.forEach(function (item) {
+        return item.classList.remove(cls);
+      });
+      this.titles[i].classList.add(cls);
+    }
+  }, {
+    key: "chkr",
+    value: function chkr() {
+      if (this.active < 0) this.active = 0;else if (this.active > this.lists.length - 1) this.active = this.lists.length - 1;else this.active;
+      return this.active;
+    }
+  }]);
+
+  return Ratings;
+}();
+
+_toConsumableArray(document.querySelectorAll('.rating__rating')).forEach(function (item) {
+  return new Ratings(item);
+});
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 var selects = _toConsumableArray(document.querySelectorAll('select'));
 
 selects.forEach(function (select) {

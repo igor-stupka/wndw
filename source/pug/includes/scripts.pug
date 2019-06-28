@@ -18,8 +18,3 @@ script.
 		: t.attachEvent
 		? t.attachEvent("onload", function() { c(r.scripts) })
 		: t.onload = function() { c(r.scripts) } } (window, document, scr);
-
-//- service worker connect
-script.
-	if ('serviceWorker' in navigator) navigator.serviceWorker.register('sw.js');
-

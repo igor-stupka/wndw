@@ -20,4 +20,14 @@
 		<image width="16" height="17" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAARCAYAAADUryzEAAAAdUlEQVQ4T2NkQIA0IHMKEOcA8SwkcWQmhhpGJNmFQHYcEG8A4kAcBmCoARmwAoglgFgDiMWB+C0QX8FhALqaLyADHgCxPA4NhIQ/UsUAUICJEbIKh/xXkAssgJiDTAP+UMULAx+Ioy4YDEn5EjAVypGZEj8CALHdJ9iYRhH9AAAAAElFTkSuQmCC"/>
 	</symbol>
 
+	<symbol id="next" width="10" height="14" viewBox="0 0 10 14">
+		<image width="10" height="14" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAYAAAAWo42rAAAAmUlEQVQoU2NkYGAQAeJDQFwHxGuAGCtgBIoaAPF5IP4PxKVA3ItNJbJCmPxUICMfiP8ia8CmECS/GYgjgPgbTDEuhSD5s0DsA8QvQBx8CkHyD4HYE4ivE1IIUvwOiBWIUfgeqFCekMJHUKuv4VN4DuqZ5/g8swUaPF/xBc80oGQevgAHRWEZEPcgxwiyiaBEsR+IG4EYZ6IAAOTYJik+y9FKAAAAAElFTkSuQmCC"/>
+	</symbol>
+
+	<symbol id="prev" width="10" height="14" viewBox="0 0 10 14">
+		<image width="10" height="14" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAYAAAAWo42rAAAAk0lEQVQoU2NkwA9CgNINQGzLiEddCVCuC4hBahSxKWQGSkwC4iwkQzAUcgMlVwCxD5pNKAolgZJbgNgIi3PgCrWAktuBWA6Hm8EKeYH4IRAL4vEYXOEDoCIhQgpB8ppQq+XxWQ2Tk4B6xhifZ2ByXNDg8cUXPDA5UIBPBOJsfAGObFAxkNMNxDijEFkxKFE0ArENAG/FD7Gl/EGbAAAAAElFTkSuQmCC"/>
+	</symbol>
+
 </svg>
+
+

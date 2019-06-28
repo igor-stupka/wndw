@@ -1,0 +1,91 @@
+.rating
+	padding: 95px 0 0
+	&__
+		&grid
+			display: grid
+			grid-template-columns: 1fr 1fr
+			grid-gap: 40px 100px
+			margin-bottom: 65px
+		&nav
+			margin: 33px 0
+			display: flex
+			justify-content: space-between
+			align-items: center
+			padding: 14px 18px
+			border: 2px solid rgba(150, 147, 159, 0.35)
+			text-align: center
+			
+		&prev,
+		&next
+			width: 10px
+			height: 14px
+			cursor: pointer
+			&:hover 
+				transform: scale(1.2)
+			&:active
+				transform: scale(.9)
+		&list 
+			display: none
+			counter-reset: inst
+			&.active 
+				display: block
+		&caption 
+			display: none
+			color: #201f1f
+			font-size: 18px
+			font-weight: 900
+			&.active 
+				display: block
+		&ol-item
+			display: flex
+			align-items: center
+			counter-increment: inst
+			margin-bottom: 16px
+
+			&::before
+				content: counter(inst) "."
+				width: 35px
+				display: block
+				color: #96939f
+				font-size: 13px
+				font-weight: 700
+		&ul-item
+			&:not(:last-child)
+				margin-bottom: 50px
+		&logo
+			width: 48px
+			height: 48px 
+			background-color: #95929f
+			border-radius: 50%
+			margin-right: 21px
+			overflow: hidden
+		&img
+			object-fit: contain
+			width: 100%
+		&icon 
+			width: 20px
+			height: 20px
+			margin-right: 13px
+			&--
+				&calendar
+					width: 16px
+					height: 17px
+		&line
+			display: flex
+			align-items: center
+		&info 
+			display: flex
+			align-items: center
+			color: #96939f
+			font-size: 13px
+			font-weight: 700
+			text-transform: uppercase
+			& + .rating__info 
+				margin-left: 40px
+		&name 
+			margin-top: 15px
+			color: #201f1f
+			font-size: 18px
+			font-weight: 900
+			line-height: 26px
+			display: block
