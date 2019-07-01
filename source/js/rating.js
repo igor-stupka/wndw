@@ -1,5 +1,5 @@
 class Ratings{
-  constructor(item){
+  constructor(item) {
     this.parent = item;
     this.prevBtn = item.querySelector('.rating__prev');
     this.nextBtn = item.querySelector('.rating__next');
@@ -9,16 +9,13 @@ class Ratings{
 
     this.nextBtn.addEventListener('click', () => this.itter( this.chkr(++this.active) ));
     this.prevBtn.addEventListener('click', () => this.itter( this.chkr(--this.active) ));
-
   }
 
   itter(i, cls='active') {
-
-        this.lists.forEach(item => item.classList.remove(cls))
-        this.lists[i].classList.add(cls); 
-        this.titles.forEach(item => item.classList.remove(cls))
-        this.titles[i].classList.add(cls);
-
+    this.lists.forEach(item => item.classList.remove(cls))
+    this.lists[i].classList.add(cls); 
+    this.titles.forEach(item => item.classList.remove(cls))
+    this.titles[i].classList.add(cls);
   } 
 
   chkr() {

@@ -27,6 +27,82 @@ function _defineProperties(target, props) { for (var i = 0; i < props.length; i+
 
 function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
 
+var Nav =
+/*#__PURE__*/
+function () {
+  function Nav(subitem) {
+    var _this = this;
+
+    _classCallCheck(this, Nav);
+
+    this.subitem = subitem;
+    this.menu = this.subitem.querySelector('.js-sm');
+    this.menuItems = this.menu.querySelectorAll('.js-nav-item');
+    this.menuGroups = this.menu.querySelectorAll('.js-group');
+    this.bg = document.querySelector('.js-nav-bg');
+    this.subitem.addEventListener('mouseover', function () {
+      return _this.subitem.classList.add('hovered');
+    });
+    this.subitem.addEventListener('mouseout', function () {
+      return _this.subitem.classList.remove('hovered');
+    });
+    this.menu.addEventListener('mouseover', function () {
+      return _this.bg.style.display = 'block';
+    });
+    this.menu.addEventListener('mouseout', function () {
+      return _this.bg.style.display = 'none';
+    });
+    this.menuItems.forEach(function (item) {
+      var link = item.dataset.group;
+      item.addEventListener('mouseover', function () {
+        _this.hover(link, item);
+      });
+    });
+  }
+
+  _createClass(Nav, [{
+    key: "hover",
+    value: function hover(link, li) {
+      this.menuGroups.forEach(function (group) {
+        var groupName = group.getAttribute('id');
+
+        if (groupName == link) {
+          group.addEventListener('mouseover', function () {
+            li.classList.add('hovered');
+          });
+          group.addEventListener('mouseout', function () {
+            li.classList.remove('hovered');
+          });
+          group.style.display = 'block';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    }
+  }]);
+
+  return Nav;
+}();
+
+_toConsumableArray(document.querySelectorAll('.js-submenu')).forEach(function (subitem) {
+  return new Nav(subitem);
+});
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
 var Ratings =
 /*#__PURE__*/
 function () {
