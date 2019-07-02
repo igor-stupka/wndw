@@ -86,10 +86,13 @@
 			overflow: hidden
 				
 
-			&:hover 
+			&:hover
 				text-decoration: underline
+			&:hover, 
+			&:focus
 				& + .nav__sm
 					display: block
+				
 		&sm
 			display: none
 			position: absolute
@@ -214,7 +217,8 @@
 			padding-left: 10px
 			color: #000
 			font-family: Montserrat
-			font-size: 13px
+			font-weight: 500
+			font-size: 16px
 			&::placeholder
 				color: #6c6c6c
 				font-family: Montserrat

@@ -8,7 +8,7 @@ class Tabs{
       this.itter(this.nav, i);
 			this.itter(this.tabs, i);
     }))
-  }
+  } 
 
   itter(arr, v, cls='active'){
     arr.forEach((item, i) => i == v 

@@ -20,7 +20,7 @@
     arrow.classList.add(`${cls}__arrow`);
     arrow.onclick = () => new_.classList.toggle('opened');
  
-    let current = document.createElement('div');
+    let current = document.createElement('button');
     current.classList.add(`${cls}__current`);
     let currentText = document.createElement('span');
     currentText.classList.add(`${cls}__currentText`);
@@ -36,7 +36,7 @@
     options.forEach(option => {
       let optionClasses = option.className
 
-      let opt = document.createElement('div');
+      let opt = document.createElement('button');
       opt.innerText = option.innerText;
       opt.classList.add(`${cls}__option`);
       Object.keys(option.dataset).map(key => {

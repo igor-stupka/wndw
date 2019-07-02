@@ -6,36 +6,19 @@
 			grid-template-columns: 1fr 1fr
 			grid-gap: 40px 100px
 			margin-bottom: 65px
-		&nav
-			margin: 33px 0
-			display: flex
-			justify-content: space-between
-			align-items: center
-			padding: 14px 18px
-			border: 2px solid rgba(150, 147, 159, 0.35)
-			text-align: center
-			
-		&prev,
-		&next
-			width: 10px
-			height: 14px
-			cursor: pointer
-			&:hover 
-				transform: scale(1.2)
-			&:active
-				transform: scale(.9)
 		&list 
-			display: none
 			counter-reset: inst
-			&.active 
-				display: block
+			padding: 0 1px
+			
 		&caption 
-			display: none
 			color: #201f1f
 			font-size: 18px
 			font-weight: 900
-			&.active 
-				display: block
+			width: 100%
+			text-align: center
+			padding: 14px 0
+			margin: 33px 0
+			
 		&ol-item
 			display: flex
 			align-items: center
@@ -90,4 +73,35 @@
 			line-height: 26px
 			display: block
 			&:hover 
-				color: $accent2C 
+				color: $accent2C
+		&rating 
+			position: relative
+			max-width: 550px
+			width: 100% 
+			.tns-controls
+				display: flex
+				justify-content: space-between
+				align-items: center
+				position: absolute
+				width: 100%
+				top: 62px
+				left: 0
+				padding: 14px 18px
+				border: 2px solid rgba(150, 147, 159, 0.35)
+				text-align: center
+				z-index: 2
+				&>button 
+					text-indent: -9999px
+					cursor: pointer
+					width: 10px
+					height: 14px
+					border-radius: 0
+					background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' width='10' height='14' viewBox='0 0 10 14'%3E%3Cimage width='10' height='14' xlink:href='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAOCAYAAAAWo42rAAAAk0lEQVQoU2NkwA9CgNINQGzLiEddCVCuC4hBahSxKWQGSkwC4iwkQzAUcgMlVwCxD5pNKAolgZJbgNgIi3PgCrWAktuBWA6Hm8EKeYH4IRAL4vEYXOEDoCIhQgpB8ppQq+XxWQ2Tk4B6xhifZ2ByXNDg8cUXPDA5UIBPBOJsfAGObFAxkNMNxDijEFkxKFE0ArENAG/FD7Gl/EGbAAAAAElFTkSuQmCC'/%3E%3C/svg%3E")
+					&:nth-child(2)
+						transform: rotate(180deg)
+					&:hover 
+						opacity: .8
+					&:active
+						opacity: .3
+					&[disabled]
+						opacity: .3

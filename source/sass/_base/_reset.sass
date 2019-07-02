@@ -16,11 +16,11 @@ body
 	margin: 0
 	padding: 0
 	border: none
-	outline: none
 	background: none
 	text-decoration: none
 	&::before,
 	&::after
 		box-sizing: border-box
+	&:focus
+		outline: 1px dotted $accent2C
 
-//@include placeholder($mainF, 16px, rgba(#000, .5))
