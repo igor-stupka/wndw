@@ -3,7 +3,7 @@
 setTimeout(function () {
   var slider = tns({
     container: '.js-stock__tns',
-    items: 3,
+    items: 1,
     slideBy: 'page',
     mouseDrag: true,
     swipeAngle: false,
@@ -11,7 +11,15 @@ setTimeout(function () {
     speed: 400,
     loop: false,
     gutter: 30,
-    navPosition: 'bottom'
+    navPosition: 'bottom',
+    responsive: {
+      600: {
+        items: 2
+      },
+      990: {
+        items: 3
+      }
+    }
   });
   var rating1 = tns({
     container: '.rating__swiper1',

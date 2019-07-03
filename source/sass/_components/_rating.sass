@@ -1,11 +1,15 @@
 .rating
 	padding: 95px 0 0
+	@media screen and (max-width: $fablet)
+		padding: 60px 0 0
 	&__
 		&grid
 			display: grid
 			grid-template-columns: 1fr 1fr
-			grid-gap: 40px 100px
+			grid-gap: 110px 100px
 			margin-bottom: 65px
+			@media screen and (max-width: $fablet)
+				grid-template-columns: 1fr
 		&list 
 			counter-reset: inst
 			padding: 0 1px
@@ -35,6 +39,9 @@
 		&ul-item
 			&:not(:last-child)
 				margin-bottom: 50px
+			.rating__line
+				@media screen and (max-width: $mobile)
+					display: block
 		&logo
 			width: 48px
 			height: 48px 
@@ -65,6 +72,9 @@
 			text-transform: uppercase
 			& + .rating__info 
 				margin-left: 40px
+				@media screen and (max-width: $mobile)
+					margin: 12px 0 0
+
 		&name 
 			margin-top: 15px
 			color: #201f1f
@@ -76,8 +86,9 @@
 				color: $accent2C
 		&rating 
 			position: relative
-			max-width: 550px
-			width: 100% 
+
+			overflow: hidden
+
 			.tns-controls
 				display: flex
 				justify-content: space-between

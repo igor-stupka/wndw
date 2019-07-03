@@ -1,28 +1,45 @@
 .read
-	padding-bottom: 88px
+	padding: 55px 0 88px
+
 	&__
 		&title
 			margin-bottom: 48px
+			@media screen and (max-width: $fablet)
+				margin-bottom: 32px
 		&parts
 			display: flex
 			justify-content: space-between
+			@media screen and (max-width: $fablet)
+				display: block
 		&left
 			width: calc(100% - 315px)
-
+			@media screen and (max-width: $fablet)
+				width: 100%
+				margin-bottom: 40px
 		&nav
 			margin-bottom: 48px
 			display: flex
 			justify-content: space-between
 			align-items: center
+			@media screen and (max-width: $mobile)
+				padding: 0 15px
+				display: block
+				margin-bottom: 30px
 		&articles
 			grid-template-columns: 1fr 1fr 1fr
 			grid-gap: 60px 15px
 			display: none
+			@media screen and (max-width: $tablet)
+				grid-template-columns: 1fr 1fr
+			@media screen and (max-width: $mobile)
+				grid-template-columns: 1fr
 			&.active
 				display: grid
 		&right
 			width: 300px
 			position: relative
+			@media screen and (max-width: $fablet)
+				width: 100%
 		&banner
 			width: 100%
 			min-height: 435px
@@ -33,6 +50,8 @@
 			left: 0
 		&tabs
 			display: flex
+			@media screen and (max-width: $mobile)
+				margin-bottom: 10px
 		&tab
 			font-size: 13px
 			font-weight: 700

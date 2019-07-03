@@ -1,10 +1,17 @@
 .news
 	&__
+		&title
+			@media screen and (max-width: $mobile)
+				padding: 0 15px
 		&articles
 			margin-top: 55px
 			grid-template-columns: 1fr 1fr 1fr 1fr
 			grid-gap: 60px 15px
 			display: grid
+			@media screen and (max-width: $tablet)
+				grid-template-columns: 1fr 1fr
+			@media screen and (max-width: $mobile)
+				grid-template-columns: 1fr
 		&banner
 			background-color: #eff0f2
 		&banner-img

@@ -1,11 +1,17 @@
 .platform
 	padding: 55px 0 65px
 	background-color: #eff0f2
+	@media screen and (max-width: $fablet)
+		padding: 50px 0
 	&__
 		&text
 			margin-top: 60px
+			@media screen and (max-width: $fablet)
+				margin-top: 30px
 			p
 				color: #000000
 				font-size: 18px
 				font-weight: 400
 				line-height: 1.333 
+				@media screen and (max-width: $fablet)
+					font-size: 15px

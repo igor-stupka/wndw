@@ -3,6 +3,9 @@
 	&__
 		&main 
 			background-color: $lightGrayC
+			@media screen and (max-width: $tablet)
+				background-color: $accent1C
+				padding: 10px 0
 		&line
 			display: flex
 			justify-content: space-between
@@ -17,6 +20,8 @@
 			position: relative
 			display: flex
 			align-items: center
+			@media screen and (max-width: $tablet)
+				padding-right: 0
 			&::before
 				content: ''
 				height: 100%
@@ -35,22 +40,29 @@
 			align-items: center
 		&lang
 			margin-right: 40px
+			@media screen and (max-width: $tablet)
+				display: none
 			.select__current
 				font-weight: 700
 				text-decoration: underline
 		&search
 			padding: 15px 10px
+			@media screen and (max-width: $tablet)
+				display: none
 
 
 
 
 .nav
+	@media screen and (max-width: $tablet)
+		display: none
 	&__
 		&list
 			display: flex
 			justify-content: space-between
 			align-items: center
 			width: 100%
+
 
 		&list
 			padding-left: 19px

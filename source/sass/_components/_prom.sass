@@ -1,12 +1,18 @@
 .prom
-	padding: 70px 0 50px 
+	padding: 70px 0 30px
+	@media screen and (max-width: $fablet)
+		padding-top: 60px
 	&__
 		&row
 			display: flex 
 			justify-content: space-between
+			@media screen and (max-width: $fablet)
+				display: block
 		&column 
 			width: calc(50% - 15px)
-			margin-bottom: 40px
+			margin-bottom: 60px
+			@media screen and (max-width: $fablet)
+				width: 100%
 		&list
 			margin-top: 38px
 		&item
@@ -14,14 +20,18 @@
 			align-items: center
 			&:not(:last-child)
 				margin-bottom: 25px
+			@media screen and (max-width: $mobile)
+				align-items: flex-start
 		&secondary
+			display: flex
+			align-items: center
 			color: #96939f
 			font-size: 18px
 			font-weight: 900
 			margin-bottom: 8px
-		&secondary   
-			display: flex
-			align-items: center
+			@media screen and (max-width: $mobile)
+				font-weight: 700
+				font-size: 15px
 		&icon
 			width: 19px
 			height: 22px
@@ -32,6 +42,10 @@
 			font-size: 18px
 			font-weight: 900
 			line-height: 26px
+			@media screen and (max-width: $mobile)
+				font-weight: 700
+				font-size: 15px
+				line-height: 22px
 			&:hover 
 				color: $accent2C
 		&pic-wrap
@@ -45,6 +59,8 @@
 			display: flex
 			align-items: center
 			justify-content: center
+			& + .prom__content
+				width: calc(100% - 60px)
 		&pic
 			width: 100%
 

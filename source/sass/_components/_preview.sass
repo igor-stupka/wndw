@@ -7,6 +7,8 @@
 			overflow: hidden
 			padding-top: 67%
 			background-color: #95929f
+			@media screen and (max-width: $tablet)
+				margin-bottom: 24px
 			&--
 				&video
 					&::before
@@ -20,6 +22,9 @@
 						transform: translate(-50%, -50%)
 						width: 28px
 						height: 32px
+						@media screen and (max-width: $mobile)
+							width: 14px
+							height: 18px
 
 
 		&img
@@ -36,11 +41,18 @@
 			font-size: 18px
 			font-weight: 900
 			line-height: 1.4
+			@media screen and (max-width: $tablet)
+				font-size: 16px
+				font-weight: 700
+			@media screen and (max-width: $mobile)
+				padding: 0 15px
 		&date 
 			color: #96939f
 			font-size: 13px
 			font-weight: 700
 			margin-bottom: 5px
+			@media screen and (max-width: $mobile)
+				display: none
 	&:hover
 		.preview__title
 			color: $accent2C

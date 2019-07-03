@@ -8,8 +8,11 @@
 			align-items: center
 			margin-bottom: 45px
 		&logo
-			max-width: 190px
-			width: 100%
+			image,
+			svg
+				width: 190px
+				@media screen and (max-width: $fablet)
+					width: 95px
 		&tel 
 			color: #ffffff
 			font-size: 30px
@@ -18,17 +21,25 @@
 			&::before 
 				content: attr(data-code )
 				color: #c6c6c6
+			@media screen and (max-width: $fablet)
+				font-size: 15px
 		&nav
 			display: grid
 			grid-template-columns: 1fr 1fr
-			grid-gap: 30px 95px
+			grid-gap: 40px 95px
 			padding-bottom: 25px
+			@media screen and (max-width: $fablet)
+				grid-template-columns: 1fr
+				padding-bottom: 60px
+
 		&title
 			text-transform: uppercase
 			color: #000
 			font-size: 16px
 			font-weight: 700
 			margin-bottom: 26px
+			@media screen and (max-width: $fablet)
+				font-size: 13px
 		&menu
 			display: flex
 			justify-content: space-between
@@ -36,6 +47,10 @@
 		&menu-item
 			width: calc(50% - 25px)
 			margin-bottom: 22px
+			@media screen and (max-width: $tablet)
+				width: 100%
+			@media screen and (max-width: $fablet)
+				margin-bottom: 15px
 		&link 
 			color: #fff
 			font-size: 14px
@@ -44,15 +59,19 @@
 			font-weight: 400
 			&:hover 
 				color: $accent2C
+			@media screen and (max-width: $fablet)
+				font-size: 13px
 		&links
 			width: 100%
 			display: flex
 			justify-content: center
+			flex-wrap: wrap
 		&li
 			padding: 0 9px
 		&a
 			color: #fff
 			font-size: 12px
+			line-height: 30px
 			&:hover 
 				color: $accent2C
 
