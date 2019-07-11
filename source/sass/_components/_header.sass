@@ -1,11 +1,18 @@
 .header
 	width: 100%
+	@media screen and (max-width: $tablet)
+		position: fixed
+		left: 0
+		top: 0
+		z-index: 3
 	&__
 		&main 
 			background-color: $lightGrayC
 			@media screen and (max-width: $tablet)
 				background-color: $accent1C
 				padding: 10px 0
+				z-index: 3
+				position: relative
 		&line
 			display: flex
 			justify-content: space-between
@@ -22,6 +29,10 @@
 			align-items: center
 			@media screen and (max-width: $tablet)
 				padding-right: 0
+				position: absolute
+				left: calc(50% - 15px)
+				top: 5px
+				transform: translateX(-50%)
 			&::before
 				content: ''
 				height: 100%
@@ -48,8 +59,8 @@
 		&search
 			padding: 15px 10px
 			@media screen and (max-width: $tablet)
-				display: none
-
+				padding: 10px 0px
+			
 
 
 
@@ -69,22 +80,23 @@
 			display: flex
 			align-items: stretch
 		&item 
-			&.hovered
-				.nav__item-caption
-					&::after 
-						content: ''
-						width: 30px
-						height: 30px
-						background-color: #fff
-						transform: translateX(-50%) rotate(45deg)
-						bottom: -17px
-						left: 50%
-						position: absolute
-						z-index: 5
-				&:first-child 
+			&--submenu
+				&:hover
 					.nav__item-caption
-						&::after
-							background-color: #eff0f2
+						&::after 
+							content: ''
+							width: 30px
+							height: 30px
+							background-color: #fff
+							transform: translateX(-50%) rotate(45deg)
+							bottom: -17px
+							left: 50%
+							position: absolute
+							z-index: 5
+					&:first-child 
+						.nav__item-caption
+							&::after
+								background-color: #eff0f2
 
 		&item-caption
 			color: #4e4e4e
@@ -126,44 +138,68 @@
 
 
 .sm
-	background-color: #eff0f2
-	width: $containerW
+	background-color: #fff
+	width: 1170px
 	&__
 		&row 
 			display: flex
 			justify-content: space-between
-		&main 
-			width: calc(100% - 560px)
+
 		&group
 			background-color: #fff
-			width: 100%
-			height: 100%
 			padding: 16px
-
-		&group:not(:first-child)
+			position: absolute
+			width: 610px
+			left: 100%
+			top: 0
 			display: none
+			z-index: 4
+			height: 395px
+
+		&list-item
+			&:first-child
+				.sm__group,
+				.sm__arrow::before
+					display: block
+			&:hover
+				.sm__group,
+				.sm__arrow::before
+					display: block !important
 		&side
 			width: 280px
-		&list
-			padding: 5px 0
-			overflow: hidden
+			position: relative
+			background-color: #eff0f2
+			&:hover
+				.sm__list-item
+					&:first-child
+						.sm__group,
+						.sm__arrow::before
+								display: none
+				
 		&list-item-text
 			color: #4e4e4e
 			font-size: 16px
 			display: block
 			padding: 9px 18px
 			position: relative
-			&:hover,
-			&.hovered
-				&::before
-					content: ''
-					width: 30px
-					height: 30px
-					background-color: #fff
-					transform: rotate(45deg)
-					right: -17px
-					top: 0
-					position: absolute
+			&:first-child
+				padding-top: 14px
+
+		&arrow
+			height: 0
+			width: 100%
+			position: relative
+			&::before
+				content: ''
+				width: 27px 
+				height: 27px
+				background-color: #fff
+				transform: rotate(45deg)
+				right: -17px
+				bottom: 5px
+				position: absolute
+				display: none
+
 		&gorup-title
 			color: #4e4e4e
 			font-size: 17px
@@ -176,7 +212,6 @@
 			flex-wrap: wrap
 		&gorup-item
 			width: 260px
-			
 			padding: 3px 0
 		&gorup-item-link
 			font-size: 16px
@@ -187,21 +222,67 @@
 			padding: 12px
 		&img
 			margin: 0 auto
-			display: block 
+			display: block
 
-	
+.burger
+	width: 25px 
+	height: 17px
+	position: absolute 
+	top: 5px
+	left: 0px  
+	transform: rotate(0)
+	cursor: pointer
+	display: none
+	@media screen and (max-width: $tablet)
+		display: block
+	&__ 
+		&line
+			display: block
+			position: absolute 
+			height: 3px 
+			width: 25px
+			background: $accent2C 
+			border-radius: 9px
+			left: 0
+			transform: rotate(0)
+			transition: .3s
+			&:nth-child(1)
+				top: 0px
+			&:nth-child(2)
+				top: 7px
+			&:nth-child(3)
+				top: 14px
+	&.open
+		.burger__line
+			&:nth-child(1)
+				top: 7px
+				transform: rotate(135deg)
+			&:nth-child(2)
+				opacity: 0
+				left: -60px
+			&:nth-child(3)
+				top: 7px
+				transform: rotate(-135deg)
 
-
-
+.lens
+	width: 24px
+	height: 24px
+	margin-right: 10px
+	display: none
+	@media screen and (max-width: $tablet)
+		display: block
+	&__
+		&img 
+			width: 100%
+			height: 100% 
 
 .user-pic
+	height: 28px
+	width: 28px
+	position: relative
+	overflow: hidden
+	border-radius: 50%
 	&__
-		&wrap
-			height: 28px
-			width: 28px
-			position: relative
-			overflow: hidden
-			border-radius: 50%
 		&img
 			width: 100%
 			height: 100%
@@ -210,6 +291,19 @@
 			top: 50%
 			transform: translate(-50%, -50%)
 			object-fit: cover
+#search-bar
+	@media screen and (max-width: $tablet)
+		background-color: #fff
+		position: fixed
+		top: 48px
+		left: 0
+		width: 100%
+		z-index: 2
+		transform: translateY(-100%)
+		transition: transform .2s ease
+		&.open
+			transform: translateY(0)
+
 
 .search-bar
 	display: flex
@@ -221,9 +315,14 @@
 		&icon
 			margin-right: 17px
 			cursor: pointer
+			@media screen and (max-width: $tablet)
+				display: none
 		&select
 			width: 150px
 			margin-left: 25px
+			@media screen and (max-width: $tablet)
+				display: none
+
 		&input
 			width: 100%
 			padding-left: 10px
@@ -236,3 +335,13 @@
 				font-family: Montserrat
 				font-size: 13px
 				font-weight: 400
+			@media screen and (max-width: $tablet)
+				padding: 0
+		&button
+			display: none
+			background-color: #eff0f2
+			padding: 5px
+			border-radius: 4px
+			font-size: 13px
+			@media screen and (max-width: $tablet)
+				display: block

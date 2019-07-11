@@ -49,3 +49,16 @@ setTimeout(function() {
 
 
 }, 100);
+
+const lensButton = document.querySelector('#lens');
+const serchBar = document.querySelector('#search-bar');
+
+lensButton.addEventListener('click', () => {
+	serchBar.classList.toggle('open');
+});
+
+const burger = document.querySelector('#burger');
+
+burger.addEventListener('click', () => {
+	burger.classList.toggle('open');
+});

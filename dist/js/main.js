@@ -46,6 +46,15 @@ setTimeout(function () {
     nav: false
   });
 }, 100);
+var lensButton = document.querySelector('#lens');
+var serchBar = document.querySelector('#search-bar');
+lensButton.addEventListener('click', function () {
+  serchBar.classList.toggle('open');
+});
+var burger = document.querySelector('#burger');
+burger.addEventListener('click', function () {
+  burger.classList.toggle('open');
+});
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
@@ -58,68 +67,48 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+var Nav = function Nav(subitem) {
+  var _this = this;
 
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+  _classCallCheck(this, Nav);
 
-var Nav =
-/*#__PURE__*/
-function () {
-  function Nav(subitem) {
-    var _this = this;
+  this.subitem = subitem;
+  this.menu = this.subitem.querySelector('.js-sm'); // this.menuItems = this.menu.querySelectorAll('.js-nav-item');
+  // this.menuGroups = this.menu.querySelectorAll('.js-group');
 
-    _classCallCheck(this, Nav);
+  this.bg = document.querySelector('.js-nav-bg'); // this.subitem.addEventListener('mouseover', () => this.subitem.classList.add('hovered'));
+  // this.subitem.addEventListener('mouseout', () => this.subitem.classList.remove('hovered'));
 
-    this.subitem = subitem;
-    this.menu = this.subitem.querySelector('.js-sm');
-    this.menuItems = this.menu.querySelectorAll('.js-nav-item');
-    this.menuGroups = this.menu.querySelectorAll('.js-group');
-    this.bg = document.querySelector('.js-nav-bg');
-    this.subitem.addEventListener('mouseover', function () {
-      return _this.subitem.classList.add('hovered');
-    });
-    this.subitem.addEventListener('mouseout', function () {
-      return _this.subitem.classList.remove('hovered');
-    });
-    this.menu.addEventListener('mouseover', function () {
-      return _this.bg.style.display = 'block';
-    });
-    this.menu.addEventListener('mouseout', function () {
-      return _this.bg.style.display = 'none';
-    });
-    this.menuItems.forEach(function (item) {
-      var link = item.dataset.group;
-      item.addEventListener('mouseover', function () {
-        _this.hover(link, item);
-      });
-    });
-  }
+  this.menu.addEventListener('mouseover', function () {
+    return _this.bg.style.display = 'block';
+  });
+  this.menu.addEventListener('mouseout', function () {
+    return _this.bg.style.display = 'none';
+  }); // this.menuItems.forEach(item => {
+  //   let link = item.dataset.group;
+  //   item.addEventListener('mouseover', () => {
+  //     this.hover(link, item)
+  //   });
+  // });
+} // hover(link, li) {
+//   this.menuGroups.forEach(group => {
+//     let groupName = group.getAttribute('id')
+//     if (groupName == link) {
+//       group.addEventListener('mouseover', () => {
+//         li.classList.add('hovered')
+//       });
+//       group.addEventListener('mouseout', () => {
+//         li.classList.remove('hovered')
+//       });
+//       group.style.display = 'block';
+//     } else {
+//       group.style.display = 'none';
+//     }
+//   });
+// }
+;
 
-  _createClass(Nav, [{
-    key: "hover",
-    value: function hover(link, li) {
-      this.menuGroups.forEach(function (group) {
-        var groupName = group.getAttribute('id');
-
-        if (groupName == link) {
-          group.addEventListener('mouseover', function () {
-            li.classList.add('hovered');
-          });
-          group.addEventListener('mouseout', function () {
-            li.classList.remove('hovered');
-          });
-          group.style.display = 'block';
-        } else {
-          group.style.display = 'none';
-        }
-      });
-    }
-  }]);
-
-  return Nav;
-}();
-
-_toConsumableArray(document.querySelectorAll('.js-submenu')).forEach(function (subitem) {
+_toConsumableArray(document.querySelectorAll('.nav__item--submenu')).forEach(function (subitem) {
   return new Nav(subitem);
 });
 "use strict";
