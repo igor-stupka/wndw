@@ -71,17 +71,13 @@
 		&list
 			display: flex
 			justify-content: space-between
-			align-items: center
 			width: 100%
+			padding-left: 19px 
 
-
-		&list
-			padding-left: 19px
-			display: flex
-			align-items: stretch
 		&item 
 			&--submenu
-				&:hover
+				&:hover,
+				&:focus-within,
 					.nav__item-caption
 						&::after 
 							content: ''
@@ -97,6 +93,10 @@
 						.nav__item-caption
 							&::after
 								background-color: #eff0f2
+					.nav__sm
+						visibility: visible
+						opacity: 1
+						z-index: 5
 
 		&item-caption
 			color: #4e4e4e
@@ -108,24 +108,21 @@
 			cursor: pointer
 			position: relative
 			overflow: hidden
-				
-
 			&:hover
 				text-decoration: underline
-			&:hover, 
-			&:focus
-				& + .nav__sm
-					display: block
 				
 		&sm
-			display: none
 			position: absolute
-			z-index: 5
 			left: 0
 			top: 100%
 			padding: 0 15px
+			visibility: hidden
+			opacity: 0
+			z-index: -1
 			&:hover
-				display: block
+				visibility: visible
+				opacity: 1
+				z-index: 5
 		&bg
 			position: fixed
 			width: 100vW
@@ -152,30 +149,46 @@
 			width: 610px
 			left: 100%
 			top: 0
-			display: none
-			z-index: 4
 			height: 395px
+			z-index: -1
+			visibility: hidden
+			opacity: 0
 
 		&list-item
 			&:first-child
-				.sm__group,
+				.sm__group
+					z-index: 4
+					visibility: visible
+					opacity: 1
 				.sm__arrow::before
-					display: block
-			&:hover
-				.sm__group,
+					visibility: visible
+					opacity: 1
+			&:hover,
+			&:focus-within
+				.sm__group
+					z-index: 4 !important
+					visibility: visible !important
+					opacity: 1 !important
 				.sm__arrow::before
-					display: block !important
+					visibility: visible !important
+					opacity: 1 !important
+					
 		&side
 			width: 280px
 			position: relative
 			background-color: #eff0f2
-			&:hover
+			&:hover,
+			&:focus-within
 				.sm__list-item
 					&:first-child
-						.sm__group,
+						.sm__group
+							z-index: 4
+							visibility: visible
+							opacity: 1
 						.sm__arrow::before
-								display: none
-				
+							visibility: hidden
+							opacity: 0
+			
 		&list-item-text
 			color: #4e4e4e
 			font-size: 16px
@@ -198,7 +211,8 @@
 				right: -17px
 				bottom: 5px
 				position: absolute
-				display: none
+				visibility: hidden
+				opacity: 0
 
 		&gorup-title
 			color: #4e4e4e

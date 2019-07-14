@@ -11,7 +11,10 @@ var gulp           = require('gulp'),
 	autoprefixer   = require('gulp-autoprefixer'),
 	bourbon        = require('node-bourbon'),
 	notify         = require('gulp-notify'),
-	pug 		   = require('gulp-pug');
+	pug 		   = require('gulp-pug'),
+	htmlmin		   = require('gulp-htmlmin'),
+	imagemin	   = require('gulp-imagemin');
+
 
 //BROWSER-SYNC
 gulp.task('browser-sync', function() {
@@ -82,3 +85,30 @@ gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
 
 //DEFAULT
 gulp.task('default', ['watch']);
+
+//BUILD
+gulp.task('build', ['htmlMin', 'imageMin']);
+
+//HTML-MINIFUER
+gulp.task('htmlMin', () => {
+  return gulp.src('dist/*.html')
+    .pipe(htmlmin({ collapseWhitespace: true }))
+    .pipe(gulp.dest('dist'));
+});
+
+//HTML-MINIFUER
+gulp.task('imageMin', () =>
+    gulp.src('dist/img/**/*')
+    .pipe(imagemin([
+		imagemin.gifsicle({interlaced: true}),
+		imagemin.jpegtran({progressive: true}),
+		imagemin.optipng({optimizationLevel: 5}),
+		imagemin.svgo({
+		    plugins: [
+		        {removeViewBox: true},
+		        {cleanupIDs: false}
+		    ]
+		})
+	]))
+    .pipe(gulp.dest('dist/img/'))
+);

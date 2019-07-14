@@ -1,4 +1,4 @@
-//- load JS by script
+//- load JS async
 script.
 	var scr = {
 		"scripts": [
@@ -6,7 +6,7 @@ script.
 		]
 	};
 	! function(t, n, r) {
-		"use strict";
+		"use strict";  
 		var c = function(t) {
 			if ("[object Array]" !== Object.prototype.toString.call(t)) return !1;
 			for (var r = 0; r < t.length; r++) {
@@ -18,3 +18,15 @@ script.
 		: t.attachEvent
 		? t.attachEvent("onload", function() { c(r.scripts) })
 		: t.onload = function() { c(r.scripts) } } (window, document, scr);
+
+//- load JS by script
+script.
+	if ("serviceWorker" in navigator) {
+		navigator.serviceWorker.register("/sw.js")
+			.then(function (registration) {
+				console.log("Service Worker registered with scope:", 
+							 registration.scope);
+			}).catch(function (err) {
+			console.log("Service worker registration failed:", err);
+		});
+	}

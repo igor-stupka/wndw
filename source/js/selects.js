@@ -27,8 +27,10 @@
     current.appendChild(currentText);
     let activeOptions = options.filter(option => option.dataset.active)
     currentText.innerText = activeOptions.length ? activeOptions[0].innerText : options[0].innerText;
-    current.addEventListener('click', () => new_.classList.toggle('opened'));
-
+    current.addEventListener('click', (e) => {
+      e.preventDefault();
+      new_.classList.toggle('opened')
+    });
 
     let options_ = document.createElement('div');
     options_.classList.add(`${cls}__options`);
@@ -43,6 +45,7 @@
         opt.dataset[key] = option.dataset[key]
         if (key == 'link') {
           opt.addEventListener('click', () => window.location = opt.dataset[key])
+          
         }
       })
       
@@ -51,7 +54,8 @@
         opt.classList.add(`${optionClasses}`);
       }
 
-      opt.onclick = () => {
+      opt.onclick = (e) => {
+        e.preventDefault();
         if (!opt.classList.contains('select__emptOpt')) {
           [...new_.querySelectorAll('.select__option')].forEach(optn => optn.classList.remove('active'));
           opt.classList.add('active');
