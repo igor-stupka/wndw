@@ -6,21 +6,18 @@ var gulp           = require('gulp'),
 	concat         = require('gulp-concat'),
 	uglify         = require('gulp-uglify-es').default,
 	cleanCSS       = require('gulp-clean-css'),
-	wait           = require('gulp-wait'),
-	rename         = require('gulp-rename'),
 	autoprefixer   = require('gulp-autoprefixer'),
-	bourbon        = require('node-bourbon'),
-	notify         = require('gulp-notify'),
 	pug 		   = require('gulp-pug'),
 	htmlmin		   = require('gulp-htmlmin'),
-	imagemin	   = require('gulp-imagemin');
-
+	imagemin	   = require('gulp-imagemin'),
+	critical	   = require('critical'),
+	dom			   = require('gulp-dom'); 
 
 //BROWSER-SYNC
 gulp.task('browser-sync', function() {
 	browserSync({
 		server: {
-			baseDir: 'dist'
+			baseDir: './dist'
 		},
 		notify: false
 	});
@@ -29,19 +26,16 @@ gulp.task('browser-sync', function() {
 //SASS
 gulp.task('sass', function() {
 	return gulp.src('source/sass/*.sass')
-		.pipe(wait(500))
-		.pipe(sass({
-			includePaths: bourbon.includePaths
+		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(concat('main.min.css'))
+		.pipe(autoprefixer({
+			// grid: true,
+			overrideBrowserlist: ['last 10 versions']
 		}))
-		.on("error", notify.onError({
-			message: "SASS: <%= error.message %>",
-			title: "Error running something"
-		}))
-		.pipe(rename({suffix: '.min', prefix : ''}))
-		.pipe(autoprefixer(['last 15 versions']))
+		.pipe(gulp.dest('dist/css'))
 		.pipe(cleanCSS())
 		.pipe(gulp.dest('dist/css'))
-		.pipe(browserSync.reload({stream: true}))
+		.pipe(browserSync.stream());
 });
 
 //PUG
@@ -50,65 +44,114 @@ gulp.task('pug',  function() {
 		.pipe(pug({
 			pretty: true
 		}))
-		.on("error", notify.onError({
-        	message: "PUG: <%= error.message %>",
-        	title: "Error running something"
-      	}))
-		.pipe(gulp.dest('dist/'));
+		.pipe(gulp.dest('dist/'))
+		.pipe(browserSync.reload({ stream: true }))
 });
 
 //JS
-gulp.task('js', function() {
+gulp.task('js', async function() {
 	gulp.src('source/js/**/*.js')
 		.pipe(sourcemaps.init())
 		.pipe(babel({
 			presets: ['@babel/env']
 		}))
-		.on("error", notify.onError({
-        	message: "JS: <%= error.message %>",
-        	title: "Error running something"
-      	}))
 		.pipe(concat('main.js'))
 		.pipe(gulp.dest('dist/js'))
 		.pipe(uglify())
 		.pipe(concat('main.min.js'))
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist/js'))
+		.pipe(browserSync.reload({ stream: true }));
 });
 
+
 //WATCH
-gulp.task('watch', ['pug', 'sass', 'js', 'browser-sync'], function() {
-	gulp.watch('source/pug/**/*.pug', ['pug']).on('change', browserSync.reload);
-	gulp.watch('source/sass/**/*.sass', ['sass']).on('change', browserSync.reload);
-	gulp.watch('source/js/**/*.js', ['js']).on('change', browserSync.reload);
+gulp.task('watch', function() {
+	gulp.watch('source/pug/**/*.pug',  gulp.parallel('pug'));
+	gulp.watch('source/sass/**/*.sass',  gulp.parallel('sass'));
+	gulp.watch('source/js/**/*.js',  gulp.parallel('js'));
 });
 
 //DEFAULT
-gulp.task('default', ['watch']);
+gulp.task('default', gulp.parallel('pug', 'sass', 'js', 'browser-sync', 'watch'));
 
-//BUILD
-gulp.task('build', ['htmlMin', 'imageMin']);
 
 //HTML-MINIFUER
 gulp.task('htmlMin', () => {
   return gulp.src('dist/*.html')
-    .pipe(htmlmin({ collapseWhitespace: true }))
-    .pipe(gulp.dest('dist'));
+	.pipe(htmlmin({ collapseWhitespace: true }))
+	.pipe(gulp.dest('dist'));
 });
 
-//HTML-MINIFUER
-gulp.task('imageMin', () =>
-    gulp.src('dist/img/**/*')
-    .pipe(imagemin([
+//IMAGE-MIN
+gulp.task('imageMin', async () => {
+	gulp.src('dist/img/**/*')
+	.pipe(imagemin([
 		imagemin.gifsicle({interlaced: true}),
 		imagemin.jpegtran({progressive: true}),
 		imagemin.optipng({optimizationLevel: 5}),
 		imagemin.svgo({
-		    plugins: [
-		        {removeViewBox: true},
-		        {cleanupIDs: false}
-		    ]
+			plugins: [
+				{removeViewBox: true},
+				{cleanupIDs: false}
+			]
 		})
 	]))
-    .pipe(gulp.dest('dist/img/'))
-);
+	.pipe(gulp.dest('dist/img/'))
+});
+
+//DOM
+gulp.task('dom', function() {
+    return gulp.src('./dist/*.html')
+        .pipe(dom(function() {
+
+			fillEmptyAttrs(this);
+			
+            return this;
+        }))
+        .pipe(gulp.dest('./dist/'));
+});
+
+//CRITICAL-CSS
+gulp.task('critical', async () => {
+  critical.generate({
+    base: './dist',
+    src: '/index.html',
+    css: ['dist/css/main.min.css'],
+    dimensions: [{
+      width: 320,
+      height: 480
+    },{
+      width: 768,
+      height: 1024 
+    },{
+      width: 1280,
+      height: 960
+    }],
+    dest: 'index.html',
+    inline: true,
+    minify: false,
+    extract: false
+  });
+});
+
+
+//BUILD
+gulp.task('build', gulp.series(gulp.parallel('sass', 'pug', 'js'), 'dom', 'htmlMin', 'critical'));
+
+function fillEmptyAttrs(scope) {
+	const placeholder = '👋 Hi, don\'t forget to fill me up!';
+	const descrEl = scope.querySelector('meta[name="description"]');
+
+	// fill empty alt attribute in "img"
+	scope.querySelectorAll('[alt]').forEach(img => { 
+		if (img.getAttribute('alt') === '') img.setAttribute('alt', placeholder);
+	});
+	// fill empty href attribute in "a"
+	[...scope.querySelectorAll('a[href]')].forEach(link => { 
+		if (link.getAttribute('href') === '') link.setAttribute('href', '#');
+		if (link.innerHTML.trim().length === 0) link.setAttribute('aria-label', placeholder)
+	});
+	// fill empty content attribute in "meta[name='description']"
+	if (descrEl.getAttribute('content') === '') descrEl.setAttribute('content', placeholder);
+}

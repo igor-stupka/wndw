@@ -1,20 +1,16 @@
-  let selects = [...document.querySelectorAll('select')];
+  let selects = [...document.querySelectorAll('.select')];
   
   selects.forEach(select => {
-    let options = [...select.querySelectorAll('option')];
+    let options = [...select.querySelectorAll('.option')];
     let cls = 'select'; 
-
-
-
-
 
     let new_ = document.createElement('div');
     new_.classList = [...select.classList, ...[cls]].join(' ');
 
     let input = document.createElement('input');
-    input.name = select.name;
+    input.name = select.dataset.name;
     input.type = 'hidden';
-    input.value = options[0].value;
+    input.value = options[0].innerText;
 
     let arrow = document.createElement('div');
     arrow.classList.add(`${cls}__arrow`);
@@ -36,9 +32,10 @@
     options_.classList.add(`${cls}__options`);
 
     options.forEach(option => {
-      let optionClasses = option.className
-
+      let optionClasses = option.classList;
       let opt = document.createElement('button');
+      let opionAttr = option.getAttribute('aria-label');
+      if (opionAttr !== null)  opt.setAttribute('aria-label', opionAttr);
       opt.innerText = option.innerText;
       opt.classList.add(`${cls}__option`);
       Object.keys(option.dataset).map(key => {
@@ -50,8 +47,11 @@
       })
       
 
-      if (optionClasses){
-        opt.classList.add(`${optionClasses}`);
+      if (optionClasses.length){
+        optionClasses.forEach(className => {
+          opt.classList.add(className);
+        });
+        
       }
 
       opt.onclick = (e) => {
@@ -60,7 +60,7 @@
           [...new_.querySelectorAll('.select__option')].forEach(optn => optn.classList.remove('active'));
           opt.classList.add('active');
 
-          input.value = opt.closest('form') ? option.innerText : option.value;
+          input.value = opt.dataset.value ? opt.dataset.value : option.innerText;
           currentText.innerText = option.innerText;
           current.click()
         }

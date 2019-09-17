@@ -346,6 +346,14 @@ function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterat
 });
 "use strict";
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 setTimeout(function () {
   var slider = tns({
     container: '.js-stock__tns',
@@ -368,11 +376,11 @@ setTimeout(function () {
     }
   });
   var rating1 = tns({
-    container: '.rating__swiper1',
+    container: '.js-rating__swiper1',
     items: 1,
     slideBy: 'page',
     mouseDrag: true,
-    swipeAngle: true,
+    swipeAngle: false,
     controls: true,
     speed: 400,
     loop: false,
@@ -380,11 +388,11 @@ setTimeout(function () {
     nav: false
   });
   var rating2 = tns({
-    container: '.rating__swiper2',
+    container: '.js-rating__swiper2',
     items: 1,
     slideBy: 'page',
     mouseDrag: true,
-    swipeAngle: true,
+    swipeAngle: false,
     controls: true,
     speed: 400,
     loop: false,
@@ -392,14 +400,52 @@ setTimeout(function () {
     nav: false
   });
 }, 100);
-var lensButton = document.querySelector('#lens');
 var serchBar = document.querySelector('#search-bar');
+var lensButton = document.querySelector('#lens');
+var burger = document.querySelector('#burger');
+var nav = document.querySelector('#nav');
+var inputSearch = document.querySelector('#searcher');
+
+var rubrics = _toConsumableArray(document.querySelectorAll('.nav__item--submenu'));
+
+var goBackButton = document.querySelector('.nav__back');
+
+var closeMenu = function closeMenu() {
+  burger.classList.remove('open');
+  nav.classList.remove('open');
+};
+
+var closeSearch = function closeSearch() {
+  serchBar.classList.remove('open');
+};
+
+function goHomeNav() {
+  nav.classList.remove('swiped');
+  rubrics.forEach(function (rubric) {
+    return rubric.querySelector('.nav__sm').classList.remove('active');
+  });
+}
+
 lensButton.addEventListener('click', function () {
   serchBar.classList.toggle('open');
+  inputSearch.focus();
+  closeMenu();
 });
-var burger = document.querySelector('#burger');
 burger.addEventListener('click', function () {
+  document.body.classList.toggle('overflow');
   burger.classList.toggle('open');
+  nav.classList.toggle('open');
+  closeSearch();
+  goHomeNav();
+});
+goBackButton.addEventListener('click', function () {
+  return goHomeNav();
+});
+rubrics.forEach(function (rubric) {
+  rubric.querySelector('.nav__item-caption').addEventListener('click', function () {
+    nav.classList.add('swiped');
+    rubric.querySelector('.nav__sm').classList.add('active');
+  });
 });
 "use strict";
 
@@ -442,18 +488,18 @@ function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
-var selects = _toConsumableArray(document.querySelectorAll('select'));
+var selects = _toConsumableArray(document.querySelectorAll('.select'));
 
 selects.forEach(function (select) {
-  var options = _toConsumableArray(select.querySelectorAll('option'));
+  var options = _toConsumableArray(select.querySelectorAll('.option'));
 
   var cls = 'select';
   var new_ = document.createElement('div');
   new_.classList = [].concat(_toConsumableArray(select.classList), [cls]).join(' ');
   var input = document.createElement('input');
-  input.name = select.name;
+  input.name = select.dataset.name;
   input.type = 'hidden';
-  input.value = options[0].value;
+  input.value = options[0].innerText;
   var arrow = document.createElement('div');
   arrow.classList.add("".concat(cls, "__arrow"));
 
@@ -477,8 +523,10 @@ selects.forEach(function (select) {
   var options_ = document.createElement('div');
   options_.classList.add("".concat(cls, "__options"));
   options.forEach(function (option) {
-    var optionClasses = option.className;
+    var optionClasses = option.classList;
     var opt = document.createElement('button');
+    var opionAttr = option.getAttribute('aria-label');
+    if (opionAttr !== null) opt.setAttribute('aria-label', opionAttr);
     opt.innerText = option.innerText;
     opt.classList.add("".concat(cls, "__option"));
     Object.keys(option.dataset).map(function (key) {
@@ -491,8 +539,10 @@ selects.forEach(function (select) {
       }
     });
 
-    if (optionClasses) {
-      opt.classList.add("".concat(optionClasses));
+    if (optionClasses.length) {
+      optionClasses.forEach(function (className) {
+        opt.classList.add(className);
+      });
     }
 
     opt.onclick = function (e) {
@@ -504,7 +554,7 @@ selects.forEach(function (select) {
         });
 
         opt.classList.add('active');
-        input.value = opt.closest('form') ? option.innerText : option.value;
+        input.value = opt.dataset.value ? opt.dataset.value : option.innerText;
         currentText.innerText = option.innerText;
         current.click();
       }
@@ -537,10 +587,10 @@ discounts.forEach(function (discount) {
 
   if (res >= 0) {
     discount.querySelector('.js-deadline').innerHTML = 'осталось ' + res + ' ' + declOfNum(res, ['день', 'дня', 'дней']);
-    discount.querySelector('.stock__progress-bar').style.width = percentage + '%';
+    discount.querySelector('.js-progress').style.width = percentage + '%';
   } else {
     discount.querySelector('.js-deadline').innerHTML = res * -1 + ' ' + declOfNum(res * -1, ['день', 'дня', 'дней']) + ' назад';
-    discount.querySelector('.stock__progress-bar').style.width = '100%';
+    discount.querySelector('.js-progress').style.width = '100%';
     discount.querySelector('.js-deadline').style.color = 'red';
   }
 });
@@ -592,20 +642,28 @@ function () {
     this.tabs = _toConsumableArray(item.querySelectorAll('.js-tabs__tab'));
     this.nav.forEach(function (item, i) {
       return item.addEventListener('click', function () {
-        _this.itter(_this.nav, i);
+        var tab = item.dataset.href.substring(1);
+        var tabEl = document.getElementById(tab);
 
-        _this.itter(_this.tabs, i);
+        if (tabEl) {
+          _this.bindClick(_this.nav, item);
+
+          _this.bindClick(_this.tabs, tabEl);
+        } else {
+          console.log('target not found');
+        }
       });
     });
   }
 
   _createClass(Tabs, [{
-    key: "itter",
-    value: function itter(arr, v) {
+    key: "bindClick",
+    value: function bindClick(arr, el) {
       var cls = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'active';
-      arr.forEach(function (item, i) {
-        return i == v ? item.classList.add(cls) : item.classList.remove(cls);
+      arr.forEach(function (itm) {
+        return itm.classList.remove(cls);
       });
+      el.classList.add(cls);
     }
   }]);
 

@@ -6,72 +6,78 @@ section.read
 					h2.section-title читать об окнах
 				.read__nav
 					.read__tabs
-						button.read__tab.js-tabs__item.active(aria-label="tab for buyers") покупателям
-						button.read__tab.js-tabs__item(aria-label="tab for masters") специалистам
-					select
-						option Популярные	
-						option Новые
-				.read__articles.js-tabs__tab.active
+						button.read__tab.js-tabs__item.active(data-href="#tab1" aria-label="tab for buyers") покупателям
+						button.read__tab.js-tabs__item(data-href="#tab2" aria-label="tab for masters") специалистам
+					.read__select
+						.select(data-name="whom")
+							.option.js-tabs__item(aria-label="tab for buyers" data-value="0" data-href="#tab1") покупателям
+							.option.js-tabs__item(aria-label="tab for masters" data-value="1" data-href="#tab2") специалистам
+
+					.select(data-name="articles")
+						.option(aria-label="Популярные статьи" data-value="0") Популярные
+						.option(aria-label="Новые статьи" data-value="1") Новые
+
+				.read__articles.js-tabs__tab.active#tab1
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w1.jpg", alt="")
-						h4.preview__title Как защититься от мошенничества при покупке окон
+						h3.preview__title Как защититься от мошенничества при покупке окон
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w2.jpg", alt="")
-						h4.preview__title Blower Door Test — тест на герметичность здания
+						h3.preview__title Blower Door Test — тест на герметичность здания
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w3.jpg", alt="")
-						h4.preview__title 10 фактов о подъемно–сдвижной системе 70LS
+						h3.preview__title 10 фактов о подъемно–сдвижной системе 70LS
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w4.jpg", alt="")
-						h4.preview__title Естественное освещение для проектирования окон
+						h3.preview__title Естественное освещение для проектирования окон
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w5.jpg", alt="")
-						h4.preview__title Годовой обзор рынка СПК в Украине за 2018год от AXOR
+						h3.preview__title Годовой обзор рынка СПК в Украине за 2018год от AXOR
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img.lazyload(data-src="img/w/w6.jpg", alt="")
-						h4.preview__title Окна: защита от солнца
+						h3.preview__title Окна: защита от солнца
 
-				.read__articles.js-tabs__tab
+				.read__articles.js-tabs__tab#tab2
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img(src="", alt="")
-						h4.preview__title Окна: защита от солнца
-
-					a.preview(href="#")
-						.preview__img-wrap
-							img.preview__img(src="", alt="")
-						h4.preview__title Годовой обзор рынка СПК в Украине за 2018год от AXOR
+						h3.preview__title Окна: защита от солнца
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img(src="", alt="")
-						h4.preview__title Естественное освещение для проектирования окон
+						h3.preview__title Годовой обзор рынка СПК в Украине за 2018год от AXOR
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img(src="", alt="")
-						h4.preview__title 10 фактов о подъемно–сдвижной системе 70LS
+						h3.preview__title Естественное освещение для проектирования окон
+
+					a.preview(href="#")
+						.preview__img-wrap
+							img.preview__img(src="", alt="")
+						h3.preview__title 10 фактов о подъемно–сдвижной системе 70LS
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img(src="", alt="") 
-						h4.preview__title Blower Door Test — тест на герметичность здания
+						h3.preview__title Blower Door Test — тест на герметичность здания
 
 					a.preview(href="#")
 						.preview__img-wrap
 							img.preview__img(src="", alt="")
-						h4.preview__title Как защититься от мошенничества при покупке окон
+						h3.preview__title Как защититься от мошенничества при покупке окон
 			.read__right
-				a(href="#").read__banner 
+				.read__banner 

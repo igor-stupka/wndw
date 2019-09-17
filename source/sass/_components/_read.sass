@@ -17,7 +17,7 @@
 				width: 100%
 				margin-bottom: 40px
 		&nav
-			margin-bottom: 48px
+			margin-bottom: 40px
 			display: flex
 			justify-content: space-between
 			align-items: center
@@ -48,10 +48,16 @@
 			position: sticky
 			top: 15px
 			left: 0
+			@media screen and (max-width: $tablet)
+				top: 65px
+			@media screen and (max-width: $fablet)
+				width: 240px
+				height: 350px
+				margin: 0 auto
 		&tabs
 			display: flex
-			@media screen and (max-width: $mobile)
-				margin-bottom: 10px
+			@media screen and (max-width: $tablet)
+				display: none
 		&tab
 			font-size: 13px
 			font-weight: 700
@@ -59,7 +65,12 @@
 			color: #96939f
 			cursor: pointer
 			user-select: none
+			padding: 10px 0
 			&.active
 				color: #236feb
 			&:not(:last-child)
 				margin-right: 40px
+		&select
+			display: none
+			@media screen and (max-width: $tablet)
+				display: block

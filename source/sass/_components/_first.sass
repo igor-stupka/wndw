@@ -51,11 +51,12 @@
 		&phrase-second
 			color: $accent1C
 			background: $whiteC
-			transform: rotate(2deg) translate(-183px, 58px)
+			transform: rotate(2deg) translate(-183px, 53px)
 			@media screen and (max-width: $fablet)
 				transform: rotate(2deg) translate(240%, -30%)
 		&phrases
 			margin-bottom: 40px
+			display: block
 			@media screen and (max-width: $fablet)
 				margin-bottom: 0
 				padding: 0 5px
@@ -66,6 +67,7 @@
 			text-transform: uppercase
 			margin-bottom: 38px
 			font-weight: 500
+			display: block
 			@media screen and (max-width: $tablet)
 				padding: 0 20px
 				margin-bottom: 22px
@@ -77,20 +79,24 @@
 			align-items: center
 			@media screen and (max-width: $tablet)
 				padding: 0 20px
+			@media screen and (max-width: $mobile)
+				flex-direction: column
 
 .button 
 	font-size: 14px
 	font-weight: 700
 	height: 58px
 	max-width: 290px
+	padding: 0 15px
 	text-align: center
 	cursor: pointer
 	user-select: none
 	text-transform: uppercase
 	line-height: 54px 
 	border: 3px solid #ffffff
+	white-space: nowrap
 	@media screen and (max-width: $fablet)
-		max-width: 116px
+		max-width: 140px
 		width: 100%
 		font-size: 8px
 		height: 36px
@@ -99,6 +105,8 @@
 		margin-left: 60px
 		@media screen and (max-width: $fablet)
 			margin-left: 35px
+		@media screen and (max-width: $mobile)
+			margin: 20px 0 0
 	&--
 		&transparent
 			border: 3px solid #ffffff

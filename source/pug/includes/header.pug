@@ -5,18 +5,18 @@ header.header
 				.header__left
 
 					button.burger#burger(aria-label='Menu button')
-						.burger__line
-						.burger__line
-						.burger__line
+						span.burger__line
+						span.burger__line
+						span.burger__line
 
 					.header__logo 
-						a(href="#")
+						a(href="#", aria-label="Логотип okna.ua")
 							<svg class="header__logo-img" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="112" height="17"><image width="112" height="17" xlink:href="data:image/png;base64,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"/></svg>
-					nav.nav
-						.nav__bg.js-nav-bg
+					nav.nav#nav
+						button.nav__back
 						ul.nav__list
 							li.nav__item.nav__item--submenu
-								a(href="#").nav__item-caption ОКНА
+								button.nav__item-caption ОКНА
 								.nav__sm 
 									.sm.js-sm
 										.sm__row
@@ -134,12 +134,8 @@ header.header
 												.sm__img-wrap
 													img(data-src="img/net.png", alt="").sm__img.lazyload
 
-							li.nav__item
-								a(href="#").nav__item-caption РЕЙТИНГ
-							li.nav__item
-								a(href="#").nav__item-caption калькуляторы
 							li.nav__item.nav__item--submenu
-								a(href="#").nav__item-caption ОБЪЯВЛЕНИЯ
+								button.nav__item-caption РЕЙТИНГИ
 								.nav__sm
 									.sm.js-sm
 										.sm__row
@@ -213,40 +209,15 @@ header.header
 																li.sm__gorup-item
 																	a(href="#").sm__gorup-item-link  item 2.3.5
 																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.3.6
-														.sm__arrow
-													li.sm__list-item
-														a(href="#").sm__list-item-text.js-nav-item items 2.4
-														.sm__group
-															h4.sm__gorup-title items 2.4
-															ul.sm__gorup-list
-																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.4.1
-																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.4.2
-														.sm__arrow
-													li.sm__list-item
-														a(href="#").sm__list-item-text.js-nav-item items 2.5
-														.sm__group
-															h4.sm__gorup-title items 2.5
-															ul.sm__gorup-list
-																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.5.1
-																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.5.2
-																li.sm__gorup-item
-																	a(href="#").sm__gorup-item-link  item 2.5.3
+																	a(href="#").sm__gorup-item-link  item 2.3.6	
 														.sm__arrow
 											.sm__side.sm__side--right
 												.sm__img-wrap
 													img(data-src="img/net.png", alt="").sm__img.lazyload
-
 							li.nav__item
-								a(href="#").nav__item-caption ТЕНДЕРЫ
-							li.nav__item
-								a(href="#").nav__item-caption ТОВАРЫ
+								a(href="#").nav__item-caption калькуляторы
 							li.nav__item.nav__item--submenu
-								a(href="#").nav__item-caption Еще
+								button.nav__item-caption ОБЪЯВЛЕНИЯ
 								.nav__sm
 									.sm.js-sm
 										.sm__row
@@ -345,20 +316,140 @@ header.header
 																	a(href="#").sm__gorup-item-link  item 3.5.3
 														.sm__arrow
 											.sm__side.sm__side--right
+												.sm__img-wrap 
+													img(data-src="img/net.png", alt="").sm__img.lazyload
+							li.nav__item
+								a(href="#").nav__item-caption ТЕНДЕРЫ
+							li.nav__item.nav__item--submenu
+								button.nav__item-caption ТОВАРЫ
+								.nav__sm
+									.sm.js-sm
+										.sm__row
+											.sm__side.sm__side--left
+												ul.sm__list
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 4.1
+														.sm__group
+															h4.sm__gorup-title items 4.1
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.2
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.3
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.4
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.5
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.6
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.7
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.8
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.9
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.1.10
+
+														.sm__arrow
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 4.2
+														.sm__group
+															h4.sm__gorup-title items 4.2
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.2
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.3
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.4
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.5
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.6
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 4.2.7
+														.sm__arrow
+		
+											.sm__side.sm__side--right
+												.sm__img-wrap
+													img(data-src="img/net.png", alt="").sm__img.lazyload
+
+
+							li.nav__item.nav__item--submenu
+								button.nav__item-caption Еще
+								.nav__sm
+									.sm.js-sm
+										.sm__row
+											.sm__side.sm__side--left
+												ul.sm__list
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 5.1
+														.sm__group
+															h4.sm__gorup-title items 5.1
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.1.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.1.2
+														.sm__arrow
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 5.2
+														.sm__group
+															h4.sm__gorup-title items 5.2
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.2.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.2.2
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.2.3
+																
+														.sm__arrow
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 5.3
+														.sm__group
+															h4.sm__gorup-title items 5.3
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.3.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.3.2
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.3.3
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.3.4
+
+														.sm__arrow
+													li.sm__list-item
+														a(href="#").sm__list-item-text.js-nav-item items 5.4
+														.sm__group
+															h4.sm__gorup-title items 5.4
+															ul.sm__gorup-list
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.4.1
+																li.sm__gorup-item
+																	a(href="#").sm__gorup-item-link  item 5.4.2
+														.sm__arrow
+											.sm__side.sm__side--right
 												.sm__img-wrap
 													img(data-src="img/net.png", alt="").sm__img.lazyload
 
 				.header__right
 					.header__lang
-						select
-							option(value="ru") рус
-							option(value="ua") укр
-							option(value="en") анг
+						.select(data-name="lang")
+							.option(data-value="ru") рус
+							.option(data-value="ua") укр
+							.option(data-value="en") анг
 
 					button.lens#lens(aria-label="Open searchbar button")
 						svg.lens__img: use(xlink:href="img/sprite.svg#small-lens")
 
-					a(href="#").user-pic
+					a(href="#" aria-label="Avatar").user-pic
 						svg.user-pic__img
 							use(xlink:href="img/sprite.svg#user")
 						
@@ -376,8 +467,9 @@ header.header
 					  autocomplete="off").search-bar__input
 				.search-bar__button SEARCH!
 				.search-bar__select
-					select
-						option(value="9234 Компании") 9234 Компании
-						option(value="Компания 1") Компания 1
-						option(value="Компания 2") Компания 2
-						option(value="Компания 3") Компания 3
+					.select(data-name="companies")
+						.option(data-value="9234 Компании") 9234 Компании
+						.option(data-value="Компания 1") Компания 1
+						.option(data-value="Компания 2") Компания 2
+						.option(data-value="Компания 3") Компания 3
+.nav__bg.js-nav-bg

@@ -22,11 +22,11 @@ setTimeout(function() {
 	});
 
 	var rating1 = tns({
-		container: '.rating__swiper1',
+		container: '.js-rating__swiper1',
 		items: 1,
 		slideBy: 'page',
 		mouseDrag: true,
-		swipeAngle: true,
+		swipeAngle: false,
 		controls: true,
 		speed: 400,
 		loop: false,
@@ -35,11 +35,11 @@ setTimeout(function() {
 	});
 
 	var rating2 = tns({
-		container: '.rating__swiper2',
+		container: '.js-rating__swiper2',
 		items: 1,
 		slideBy: 'page',
 		mouseDrag: true,
-		swipeAngle: true,
+		swipeAngle: false,
 		controls: true,
 		speed: 400,
 		loop: false,
@@ -50,15 +50,50 @@ setTimeout(function() {
 
 }, 100);
 
-const lensButton = document.querySelector('#lens');
 const serchBar = document.querySelector('#search-bar');
+const lensButton = document.querySelector('#lens');
+const burger = document.querySelector('#burger');
+const nav = document.querySelector('#nav');
+const inputSearch = document.querySelector('#searcher');
+const rubrics = [...document.querySelectorAll('.nav__item--submenu')];
+const goBackButton = document.querySelector('.nav__back');
+
+
+const closeMenu = () => {
+	burger.classList.remove('open');
+	nav.classList.remove('open');
+}
+
+const closeSearch = () => {
+	serchBar.classList.remove('open');
+}
+
+function goHomeNav() {
+	nav.classList.remove('swiped');
+	rubrics.forEach(rubric => rubric.querySelector('.nav__sm').classList.remove('active'));
+}
 
 lensButton.addEventListener('click', () => {
 	serchBar.classList.toggle('open');
+	inputSearch.focus();
+	closeMenu();
 });
-
-const burger = document.querySelector('#burger');
 
 burger.addEventListener('click', () => {
+	document.body.classList.toggle('overflow');
 	burger.classList.toggle('open');
+	nav.classList.toggle('open');
+	closeSearch();
+	goHomeNav(); 
+}); 
+ 
+goBackButton.addEventListener('click', () => goHomeNav());
+
+rubrics.forEach(rubric => {
+	rubric.querySelector('.nav__item-caption').addEventListener('click', () => {
+		nav.classList.add('swiped');
+		rubric.querySelector('.nav__sm').classList.add('active');
+	});
 });
+
+
